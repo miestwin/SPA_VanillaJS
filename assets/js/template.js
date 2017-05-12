@@ -16,27 +16,24 @@
         +   '</li>';
     }
 
-    Template.prototype.show = function (temp, data) {
+    Template.prototype.show = function (data) {
         var view = '';
+        var i = 0;
+        var l = data.length;
 
-        if (temp === 'products-list') {
-            var i = 0;
-            var l = data.length;
+        for (i; i < l; i++) {
+            var template = this.productsListTemplate;
 
-            for (i; i < l; i++) {
-                var template = this.productsListTemplate;
+            template = template.replace('{{id}}', data[i].id);
+            template = template.replace('{{image}}', data[i].image.small);
+            template = template.replace('{{name}}', data[i].name);
+            template = template.replace('{{manufacture}}', data[i].specs.manufacturer);
+            template = template.replace('{{storage}}', data[i].specs.storage);
+            template = template.replace('{{os}}', data[i].specs.os);
+            template = template.replace('{{camera}}', data[i].specs.camera);
+            template = template.replace('{{price}}', data[i].specs.price);
 
-                template = template.replace('{{id}}', data[i].id);
-                template = template.replace('{{image}}', data[i].image.small);
-                template = template.replace('{{name}}', data[i].name);
-                template = template.replace('{{manufacture}}', data[i].specs.manufacturer);
-                template = template.replace('{{storage}}', data[i].specs.storage);
-                template = template.replace('{{os}}', data[i].specs.os);
-                template = template.replace('{{camera}}', data[i].specs.camera);
-                template = template.replace('{{price}}', data[i].specs.price);
-
-                view = view + template;
-            }
+            view = view + template;
         }
 
         return view;
