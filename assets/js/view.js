@@ -1,8 +1,18 @@
-const layout = document.getElementById('layout');
-const menuLink = document.getElementById('menuLink');
+(function (window) {
+    'use strict';
 
-menuLink.addEventListener('click', function (e) {
-    layout.classList.toggle('active');
-});
+    function View (template) {
+        this.template = template;
+
+        
+    }
+})(window);
+
+// const layout = document.getElementById('layout');
+// const menuLink = document.getElementById('menuLink');
+
+// menuLink.addEventListener('click', function (e) {
+//     layout.classList.toggle('active');
+// });
 
 

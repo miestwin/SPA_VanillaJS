@@ -133,8 +133,36 @@ html {
         background-color: #1f8dd6;
     }
 
+header {
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    text-align: center;
+}
+
 #content {
-    width: 100vw;
+    max-width: 800px;
+    margin: 0 auto;
     height: 100vh;
+}
+
+@media (min-width: 1020px) {
+    #layout #filters {
+        left: 150px;
+    }
+
+    #layout .menu-link {
+        display: none;
+    }
+
+    #layout #main {
+        padding-left: 150px;
+    }
+
+    #layout {
+        left: 0;
+    }
 }
 
