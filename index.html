@@ -14,10 +14,8 @@
             </a>
 
             <div id="filters">
-                <div class="pure-filters">
-                    <span class="pure-filters-heading">Filters</span>
-
-                    <form>
+                <span class="filters-heading">Filters</span>
+                <form>
 
                         <div class="filter-criteria">
                             <span>Manufacture</span>
@@ -43,15 +41,35 @@
                         </div>
 
                         <div class="filter-criteria">
-                            
+                            <span>Camera</span>
+                            <label><input type="checkbox" name="camera" value="5">5 Mpx</label>
+                            <label><input type="checkbox" name="camera" value="8">8 Mpx</label>
+                            <label><input type="checkbox" name="camera" value="12">12 Mpx</label>
+                            <label><input type="checkbox" name="camera" value="15">15 Mpx</label>
                         </div>
 
-                    </form>
+                        <button>Clear filters</button>
+
+                </form>
+            </div>
+
+            <div id="main">
+
+                <header>
+                    <h1>Single Page Application</h1>
+                </header>
+
+                <div id="content">
 
                 </div>
+
             </div>
 
         </div>
 
+        <script src="assets/js/template.js"></script>
+        <script src="assets/js/view.js"></script>
+        <script src="assets/js/controller.js"></script>
+        <script src="assets/js/app.js"></script>
     </body>
 </html>
