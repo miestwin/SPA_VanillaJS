@@ -3,7 +3,7 @@
 
     function Template () {
         this.productsListTemplate 
-        =   '<li data-id="{{id}}">'
+        =   '<li class="product-root" data-id="{{id}}">'
         +       '<span class="product-photo"><img src="{{image}}" height="130" alt="{{name}}"></span>'
         +       '<h2>{{name}}</h2>'
         +       '<ul class="product-description">'

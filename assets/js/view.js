@@ -18,11 +18,18 @@
         this.allProducts.innerHTML = this.template.show(data);
     }
 
+    View.prototype.renderSingleProductPage = function (data) {
+        console.log('render ' + JSON.stringify(data));
+    }
+
     View.prototype.render = function (viewCmd, data) {
         var self = this;
         var viewCommands = {
             showProducts: function () {
                 self.renderProductsPage(data);
+            },
+            singleProduct: function () {
+                self.renderSingleProductPage(data);
             }
         }
         viewCommands[viewCmd]();
@@ -49,15 +56,7 @@
         }
 
         if (event === 'singleProduct') {
-            self.allProducts.addEventListener('click', function (e) {
-                if (e.target !== e.currentTarget) {
-                    var clickedId = e.target.dataset.id;
-                    console.log(clickedId);
-                    var product = handler(clickedId);
-                    console.log(JSON.stringify(product));
-                }
-                e.stopPropagation();
-            });
+            // how to get product id
         }
     }
 

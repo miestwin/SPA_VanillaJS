@@ -143,6 +143,7 @@
             }
         ];
         this.filters = {};
+        this.selectedProduct = {};
 
         var self = this;
         self.view.bind('setFilter', function (name, checked, value) {
@@ -150,13 +151,7 @@
         });
 
         self.view.bind('singleProduct', function (id) {
-            var product = self.products.filter(function (product) {
-                if (product.id === id) {
-                    return true;
-                }
-                return false;
-            });
-            return product;
+            self.findProduct(id);
         });
     }
 
@@ -169,8 +164,7 @@
             },
 
             '#product': function () {
-                const index = query[1].trim();
-                // render single product
+                self.view.render('singleProduct', self.selectedProduct);
             },
 
             '#filter': function () {
@@ -183,6 +177,17 @@
         } else {
             // render error page view.render(errorPage);
         }
+    }
+
+    Controller.prototype.findProduct = function (id) {
+        var product = this.products.filter(function (item) {
+            if (item.id === id) {
+                return true;
+            }
+            return false;
+        });
+        this.selectedProduct = product[0];
+        window.location.hash = '#product/' + this.selectedProduct.id;
     }
 
     Controller.prototype.setFilter = function (name, checked, value) {
