@@ -10,7 +10,7 @@
     var spa = new SPA ();
 
     function setView () {
-        spa.controller.setView(document.location.hash);
+        spa.controller.setView(window.location.hash);
     }
 
     window.addEventListener('DOMContentLoaded', setView);

@@ -42,7 +42,7 @@ html {
     width: 40px;
     height: 40px;
     padding: 8px;
-    
+    cursor: pointer;
 }
 
     .menu-link:hover,
@@ -142,13 +142,54 @@ header h1 {
     text-align: center;
 }
 
-#content {
-    max-width: 800px;
-    margin: 0 auto;
-    height: 100vh;
+#products-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10px;
 }
 
-@media (min-width: 1020px) {
+#products-list > li {
+    display: inline-block;
+    border:1px solid #dbe3e7;
+	border-radius: 3px;
+	box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin: 0 12px 14px 0;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+#products-list > li.hidden {
+    opacity: 0.2;
+    cursor: default;
+}
+
+#products-list > li > .product-photo {
+    display: block;
+    text-align: center;
+    box-shadow : 0 0 20px 8px #f3f3f3 inset;
+    width: 250px;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+#products-list > li > h2 {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#products-list > li > ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+#products-list > li > ul > li span {
+    font-weight: bold;
+}
+
+@media (min-width: 1250px) {
     #layout #filters {
         left: 150px;
     }
@@ -158,7 +199,7 @@ header h1 {
     }
 
     #layout #all-products {
-        padding-left: 150px;
+        margin-left: 150px;
     }
 
     #layout {
