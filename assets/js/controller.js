@@ -153,6 +153,10 @@
         self.view.bind('singleProduct', function (id) {
             self.findProduct(id);
         });
+
+        self.view.bind('clearFilters', function () {
+            self.clearFilters();
+        });
     }
 
     Controller.prototype.setView = function (locationHash) {
@@ -211,6 +215,11 @@
 
         this.createQeryHash();
     }   
+
+    Controller.prototype.clearFilters = function () {
+        this.filters = {};
+        window.location.hash = '#';
+    }
 
     Controller.prototype.filterProducts = function () {
         var products = [...this.products];

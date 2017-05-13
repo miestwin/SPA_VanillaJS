@@ -56,7 +56,22 @@
         }
 
         if (event === 'singleProduct') {
-            // how to get product id
+            document.querySelector('#products-list').addEventListener('click', function (e) {
+                if (e.target && e.target.matches('li.product-root')) {
+                    var id = Number(e.target.dataset.id);
+                    handler(id);
+                }
+            });
+        }
+
+        if (event === 'clearFilters') {
+            self.clearFilters.addEventListener('click', function (e) {
+                e.preventDefault();
+                self.checkboxs.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                });
+                handler();
+            });
         }
     }
 
