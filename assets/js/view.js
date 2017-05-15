@@ -10,16 +10,28 @@
         this.allProducts = document.querySelector('#all-products #products-list');
         this.singleProduct = document.getElementById('single-product');
         this.clearFilters = document.querySelector('#filters button');
+        this.singleProductContainer = document.getElementById('single-product-container');
 
-        this.bindMenuLink();
+        this.bindEvents();
     }
 
     View.prototype.renderProductsPage = function (data) {
         this.allProducts.innerHTML = this.template.show(data);
+        this.layout.style.display = 'block';
     }
 
     View.prototype.renderSingleProductPage = function (data) {
-        console.log('render ' + JSON.stringify(data));
+        var template 
+        = '<header><h1>{{name}}</h1></header>'
+        + '<div><img src="{{image}}" alt="{{name}}"></div>'
+        + '<footer><p>{{description}}</p></footer>';
+        template = template.replace('{{name}}', data.name);
+        template = template.replace('{{name}}', data.name);
+        template = template.replace('{{description}}', data.description);
+        template = template.replace('{{image}}', data.image.large);
+        this.singleProductContainer.innerHTML = template;
+        this.layout.style.display = 'none';
+        this.singleProduct.classList.add('active');
     }
 
     View.prototype.render = function (viewCmd, data) {
@@ -35,10 +47,15 @@
         viewCommands[viewCmd]();
     }
 
-    View.prototype.bindMenuLink = function () {
+    View.prototype.bindEvents = function () {
         var self = this;
         this.menuLink.addEventListener('click', function () {
             self.layout.classList.toggle('active');
+        });
+
+        this.singleProduct.addEventListener('click', function () {
+            self.singleProduct.classList.remove('active');
+            self.layout.style.display = 'block';
         });
     }
 
@@ -56,11 +73,13 @@
         }
 
         if (event === 'singleProduct') {
-            document.querySelector('#products-list').addEventListener('click', function (e) {
-                if (e.target && e.target.matches('li.product-root')) {
-                    var id = Number(e.target.dataset.id);
-                    handler(id);
-                }
+            self.allProducts.addEventListener('click', function (e) {
+                var li = e.target.closest('li');
+                if (!li) return;
+                if (!self.allProducts.contains(li)) return;
+                var id = li.dataset.id;
+                if (!id) return
+                handler(Number(id));
             });
         }
 
